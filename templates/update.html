@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block body %}
+  <div class="container my-3" >
+        <h1 class="mb-4">Update your task</h1>
+        <form action="/updating/{{todo.sno}}", method="POST">
+        <div class="mb-3">
+          <label for="Title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="Title" name="title" value="{{ todo.title }}" >
+        </div>
+        <div class="mb-2">
+          <label for="Desc" class="form-label">Description</label>
+          <input type="text" class="form-control" id="Desc" name="desc" value="{{ todo.desc }}" >
+        </div>
+        <!-- <div class="mb-2">
+          <label for="datetime" class="form-label">Due Date</label>
+          <input type="date" class="form-control" id="datetime" name="date">
+        </div> -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      </div>
+
+      {% endblock body %}

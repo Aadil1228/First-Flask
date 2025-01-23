@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container my-3" >
+    <h1 class="mb-4">TaskiFy</h1>
+    <h3 class="mb-2">Completed Tasks</h3>
+  <div class="container my-3">
+    {% if completedTodos|length ==0 %}
+    <div class="alert alert-dark" role="alert">
+      No Tasks Completed yet!
+    </div>
+      {% else %}
+      <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">S.No</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Date</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for todo in completedTodos %}
+          <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{todo.title}}</td>
+            <td>{{todo.desc}}</td>
+            <td>{{todo.date_created}}</td>
+            <td>
+              <a href="/undo/{{todo.sno}}" type="button" class="btn btn-outline-danger btn-sm mx-2">Undo</button>
+              <a href="/delete/{{todo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-2">Delete</button>
+            </td>
+          </tr>
+        {% endfor %}
+    {% endif %}
+    
+      </tbody>
+    </table>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{% endblock body %}
